@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 연습 - 기본</title>
+    <style>
+        /*
+        기본선택자
+        스타일 지정의 기본 문법
+        선택자 {1 . 스타일속성:값; 2. 스타일속성2:값; }
+        선택자(selector) : 어떤 엘리먼트에 스타일을 넣을거냐 = 스타일을 부여할 대상
+        */
+        * { margin: 0; padding: 0;} /* *전체선택자 */
+        h2 { border-bottom:3px dotted deeppink }
+        .para { color: white;}
+        /*클래스 선택자*/
+       #con1 { font-size: 124px; color:yellow} 
+        /* id선택자 */
+        .para {color: #333;}
+        /*같은 클래스에서는 나중에 부여한 속성이 적용됨*/
+        p {color:red;}
+        /*태그선택자는 우선순위가 가장 하위라 적용이안됨*/
+        /*스타일이 겹칠경우 우선순위를 따짐 id가 우선순위가 더 높음*/
+        p.para { color:orange} /*복합선택자*/
+        p.para#con2 {color:aqua}
+        /*우선순위 태그<클래스<아이디(가장높음) */
+        /*그래서 아이디는 가장 마지막에 스타일을 부여하는게 좋음*/
+        div,p{border-top: 1px solid #333; margin-top: 30px;}
+        /* 복수 선택자 -여러개의 아이디 및 클래스가 섞인것 */
+        
+     /*   .para {color: #333!important;} important를쓰면 우선순위를 무시하고 무조건바뀐다 */
+    </style>
+</head>
+<body>
+    <div>
+        <h2>제목</h2>
+        <p id="con1" class="para">하나</p>
+        <p id="con2" class="para">두울</p>
+        <p id="con3" class="para">세엣</p>
+    </div>
+</body>
+</html>
