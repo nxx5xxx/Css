@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 연습 - 속성 선택자</title>
+    <!-- 선택자 : 스타일을 부여할 대상 -->
+    <style>
+        /* attribute : 태그의 속성, property : 스타일의 속성 */
+        /* 속성선택자 : [attr] (= 어트리뷰트) */
+        a { text-decoration: none;}
+        a[href] { color:deeppink;} 
+        /* href의 속성이 존재하는 a태그만 색상부여 */
+        [href^="https"]{font-weight: bold;}
+        /* href속성이 https로 시작하는것 요소에만 스타일부여 */
+        [href$=".pdf"]{font-size: 24px; }
+        /* href속성이 .pdf로 끝나는 요소만 스타일부여 */
+        [href*="010"]:before{ content : "핸드폰번호 : "}
+        /* href속성이 010이 포함되는 요소에만 스타일부여 */
+        /* before는 010써있는곳 앞에 content를 넣음 */
+
+        /* 스타일의각주는 좌우 이것 <!--태그는이것-->  */
+        a[href="http://github.com"]{color: black; background-color: brown;}
+        /*속성이 정확하게 일치*/
+        img {width:200px;height:300px; margin-right: 40px;}
+        img[src$=".jpg"] {border:5px solid red;}
+        img[src$=".png"]{border:5px solid blue;}
+        img[src$=".gif"]{border:5px solid green;}
+        img[src$=".jiff"]{border:5px solid gold;}
+    </style>
+</head>
+<body>
+    <!-- div>a[href][title]{링크$}*8 -->
+    <div>
+        <a title="href가 없는 링크">링크1</a><br>
+        <a href="kbs.html" title="href가 있는 링크">링크2</a><br>
+        <a href="https://www.google.com" title="구글 링크">링크3</a><br>
+        <a href="guide.pdf" title="문서 다운로드 링크">링크4</a><br>
+        <a href="http://www.naver.com" title="네이버 링크">링크5</a><br>
+        <a href="http://github.com" title="깃허브">링크6</a><br>
+        <a href="tel:010-1234-5678" title="전화걸기 링크">링크7</a><br>
+        <a href="sms:010-1234-5678" title="문자 보내기 링크">링크8</a><br>
+    </div>
+    <!-- div>img[src="$.jpg"][alt=""]*4 -->
+    <div>
+        <img src="1.jpg"  alt="">
+        <img src="2.png"  alt=""><br><br>
+        <img src="3.gif"  alt="">
+        <img src="4.jiff" alt="">
+    </div>
+
+    
+    
+</body>
+</html>

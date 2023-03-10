@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 연습 - 구조선택자</title>
+    <style>
+        /* 형제요소 */
+        h2+ul { list-style: square; } 
+/* +인접요소 선택자 */
+/* h2태그 바로다음에 나오는 ul요소에 리스트 스타일 square*/
+/* +는 Next의 의미를 지님*/
+/* brother+next */
+        ul+ul{list-style: circle;}
+/* ul다음 나오는ul에 cirecle스타일                   */
+        h2~ul {border: 3px solid blue}
+        /* 인접(nextAll) 요소들 선택자 */
+        /* h2~ul                                            */
+
+        /*  .con h2{}     : class con안에있는 h2요소를 선택하라는 의미 */
+        /* 후손선택자 : 조상(한칸띄우고)후손 */
+        /* 여기서 띄어쓰기는 후손을 의미 (후손은 자식을 포함) */
+        /* .con li 후손을 의미해서 li도 선택할수 있다*/
+
+
+        /* .con > ul{}      : >는 자식선택자 자식까지만 선택가능 */
+        /* 여기서 후손인li를 선택하고 싶으면  .con > ul > li {} 이런식으로 해야함*/
+
+        /* 순서 위치 선택자 */
+        li:first-child {color:gold}/* li태그 중에 첫번째 */
+        li:first-of-type {padding-left: 120px;} /* 첫번째가 li여야만 */
+        /* 즉 first child는 순서를 따지고 first-of-type은 속성을 따진다 */
+        li:last-child {color:brown}
+        li:nth-child(3) {color: purple;}/*li의 자식중 (3)번째*/
+        
+        li:only-child{font-style: italic;}
+        /* 한개만 있는것을 적용 */
+        /* 한개만있는것은 첫번째 , 마지막 자식에도 적용이 되지만 맨 마지막에 있는것을 적용한다 */
+        li:nth-child(2n){font-size: 21px;}
+        /* 2n(짝수)만 변경 */
+        li:nth-child(2n+1){background-color: blueviolet;}
+        /* 2n+1(홀수)만 변경 */
+
+
+        
+        .lst1 {font-size: 50px; color: white}
+        .lst4 {color: green}
+
+        p:empty::before, div:empty::before{content : "자식 or 내용이 없는 요소"}
+    </style>
+</head>
+<body>
+    <!-- div.con>ul.lst*2>li{내용$}*4 -->
+    <!-- article>ul>li*5{목록$} -->
+    <div class="con">
+        <h2>div 요소 안의 목록 요소</h2>
+        <ul class="lst1">
+            <li>내용1</li>
+            <li>내용2</li>
+            <li>내용3</li>
+            <li>내용4</li>
+        </ul>
+        <ul class="lst2">
+            <li>내용1</li>
+            <li>내용2</li>
+            <li>내용3</li>
+            <li>내용4</li>
+        </ul>
+        <ul>
+            <li>혼자1</li>
+        </ul>
+        <ul>
+            <li>혼자2</li>
+        </ul>
+    </div>
+    <hr>
+    <article>
+        <h2>article 요소 안의 목록</h2>
+        </2>
+        <ul class="lst3">
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+            <li>목록4</li>
+            <li>목록5</li>
+        </ul>
+        <ol class="lst4">
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+            <li>목록4</li>
+            <li>목록5</li>
+        </ol>
+    </article>
+    <div class="con" title="자식이 없는 요소"></div>
+    <div class="con">여기는 내용
+        <p title="내용이 없는 요소"></p>
+    <!-- 자식이 없거나 내용이 없으면 empty라고 함 -->
+    </div>
+</body>
+</html>
