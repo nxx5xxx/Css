@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 연습 - 링크선택자</title>
+    <style>
+    a {font-size:24px;text-decoration: none;padding: 12px;}
+    /* 링크선택자 */
+    a:link{color: gold;}
+    /* 링크속성 : a태그중 링크가 걸린것의 색상을 gold로 한다 */
+    a:visited{color: red;}
+    /* a태그중에 방문했던것의 색상을 레드로한다 */
+    /* href로 하는것이라 a태그만 가능한설정 */
+    /* link와 visited는 링크가 있어야해서 a태그만 가능 */
+    
+    a:hover{background-color: deeppink; color: white;}
+    a:active{background-color: red;}
+    /* hover와 active는 링크가 아니라 a태그 외에도 가능 */
+    /* link - visited - hover - active (lvha) 의 순서가 바뀌면안된다 */
+    /* 이것들이 작동하는것을 상호작용(인터랙션)이라 한다 */
+
+    /* 가상선택자 : 어떤 특정태그가 아닌 앞에오는것, 뒤에오는것*/
+    /* 창이 커지고 작아짐에 따라 첫 줄에 오는 글씨의 갯수도 달라지는데 */
+    /* 그것과 관계없이 바뀌게해줌 */
+    a::before {content :"★ ";}
+    a::after {content : "-"attr(href);}
+    /* 전후선택자(가상선택자) */
+    /* attr=어트리뷰트(title도 가능) */
+
+    p::first-letter{font-size: 24px; color:rebeccapurple}
+    /* p태그의 첫번째 글씨의 사이즈와 색상을 변경 */
+    p::first-line{color: blue;}
+    /* 첫글자 / 첫줄 선택자 */
+
+    /*  */
+    #btn1 {display:block; width:300px; height:40px;}
+    #ck1:checked + #btn1:before{ content:"펼침";}
+    /* (체크박스와,라디오버튼에만 쓸수있음)checked : 상태선택자 */
+    /* ck1이 체크가 되어있다면 btn1에는 펼침이라는 글자가 */
+    #ck1:not(:checked) + #btn1:before{content:"접힘";}
+    /* 체크가 되어있지 않다면 접힘이라는 글자를 출력 */
+    /* 레이어팝업에서 꼭쓰는것이 checked와 +~ */
+    #box { width:500px; height: 300px; border:5px solid #333;background-color: gold;}
+    #ck1:checked ~ #box{visibility: visible; opacity: 1;}
+    /* 후손선택 */
+    #ck1:not(:checked) ~ #box{visibility: hidden; opacity: 0;}
+
+    
+    /* 타겟선택자 : 클릭햇을때 보이고 안보이게 하는것 */
+    section{width:600px; height:300px; border:3px solid black;background-color: green ;display:none}
+    section:target {display: block;}/* 타겟팅 */
+    /* url주소에 선택sec주소가 뜨는것을 타겟팅이 됏다고함 */
+    /* 폼 관련 선택자 */
+    /*
+    input:enabled - 사용가능한 input요소를 선택
+    input:disabled - 사용 불가능한 input요소를 선택
+    input:focus - 초점(커서)가 들어왔을 때 선택
+    input::placeholder - placeholder 속성의 값을 선택 
+    
+    */
+    </style>
+</head>
+<body>
+    <nav><a href="https://www.google.com" title="구글">링크1</a><br><br>
+        <!-- <a >before링크1after</a> -->
+        <a href="https://www.naver.com" title="네이버">링크2</a><br><br>
+        <a href="https://tjoeun.co.kr" title="더조은">링크3</a><br><br>
+        <a href="https//daum.net" title="다음">링크4</a><br><br>
+        <a title="링크없는 a 요소">링크5</a></nav>
+        <!-- 링크속성  -->
+        <!-- 마우스를 올렸을때 마우스가 바뀌는것을 호버 -->
+        <!-- 누르고 있는상태일때 색상이 변경되는것을 액티브 -->
+        <div>
+            <p>123456789123456789123456789123456789123456789123456789가나다라마바사아자차카타파하가나다라마바사
+                아자차카타파하가나다라마바사아자차카타파하
+                가나다라마바사아자차카타파하가나다라마바사
+                아자차카타파하가나다라마바사아자차카타파하
+            </p>
+            <p>
+                ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            </p>
+        </div>
+        <hr>
+        <input type="checkbox" id="ck1">
+        <label for="ck1" id="btn1"></label>
+        <div id="box">여기는 펼침창</div>
+        <!-- div>ul>li*3>a[href="#sec$"]{메뉴$} -->
+        <div>
+            <ul>
+                <li><a href="#sec1">메뉴1</a></li>
+                <li><a href="#sec2">메뉴2</a></li>
+                <li><a href="#sec3">메뉴3</a></li>
+            </ul>
+        </div>
+        <section id="sec1">
+            <h2>섹션 제목1</h2>
+        </section>
+        <section id="sec2">
+            <h2>섹션 제목2</h2>
+        </section>
+        <section id="sec3">
+            <h2>섹션 제목3</h2>
+        </section>
+        
+</body>
+</html>
